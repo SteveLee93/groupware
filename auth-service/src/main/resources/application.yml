@@ -1,13 +1,8 @@
 spring:
   application:
-    name: auth-service # Config Server에서 설정을 가져올 때 사용할 이름
-  cloud:
-    config:
-      uri: http://localhost:8888 # Config Server 주소
-      profile: default         # 기본 프로파일
-      fail-fast: true           # Config Server 연결 실패 시 실행 중단
+    name: auth-service
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/ # Discovery Server 주소
+      defaultZone: http://localhost:8761/eureka/

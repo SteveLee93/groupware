@@ -1,13 +1,13 @@
 spring:
   application:
     name: user-service
-  cloud:
-    config:
-      uri: http://localhost:8888 # Config Server 주소
-      profile: default           # 사용할 프로파일
-      fail-fast: true           # Config Server 연결 실패 시 실행 중단
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.config: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG
