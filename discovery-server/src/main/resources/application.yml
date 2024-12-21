@@ -1,9 +1,15 @@
 server:
   port: 8761
 
+spring:
+  application:
+    name: discovery-server # 애플리케이션 이름
+  cloud:
+    config:
+      uri: http://localhost:8888 # Config Server 주소
+      fail-fast: true # Config Server와 연결 실패 시 애플리케이션 실행 중단
+
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: false # Discovery Server는 스스로 등록하지 않음
     fetch-registry: false
-  server:
-    enable-self-preservation: false

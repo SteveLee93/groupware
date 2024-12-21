@@ -2,6 +2,8 @@ server:
   port: 8888
 
 spring:
+  application:
+    name: config-server # Config Server의 이름
   cloud:
     config:
       server:
