@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/your-username/config-repo
+          uri: https://github.com/SteveLee93/gw-config-repo
           default-label: main
