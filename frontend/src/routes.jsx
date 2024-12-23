@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard';
-// import Calendar from './pages/Calendar';
-// import Documents from './pages/Documents';
-// import Approval from './pages/Approval';
+import Calendar from './pages/Calendar';
+import Documents from './pages/Documents';
+import DocumentList from './pages/approval/DocumentList';
+import DocumentForm from './pages/approval/DocumentForm';
 import Login from './pages/Login';
 
 function AppRoutes() {
@@ -18,7 +19,7 @@ function AppRoutes() {
           </PrivateRoute>
         }
       />
-      {/* <Route
+      <Route
         path="/calendar"
         element={
           <PrivateRoute>
@@ -38,10 +39,18 @@ function AppRoutes() {
         path="/approval"
         element={
           <PrivateRoute>
-            <Approval />
+            <DocumentList />
           </PrivateRoute>
         }
-      /> */}
+      />
+      <Route
+        path="/approval/new"
+        element={
+          <PrivateRoute>
+            <DocumentForm />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }
