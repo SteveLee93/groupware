@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>그룹웨어 시스템</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/common.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 네비게이션 바 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">그룹웨어</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">홈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">일정</a>
+          </li>
+        </ul>
+        <div class="d-flex" id="userSection">
+          <!-- 로그인 상태에 따라 동적으로 변경됨 -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 메인 컨텐츠 -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">공지사항</h5>
+            <ul class="list-group list-group-flush" id="noticeList">
+              <li class="list-group-item">공지사항이 없습니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">나의 할 일</h5>
+            <ul class="list-group list-group-flush" id="todoList">
+              <li class="list-group-item">할 일이 없습니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script>
+    // 로그인 상태 확인
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      const userSection = document.getElementById('userSection');
+
+      if (token) {
+        userSection.innerHTML = `
+          <button class="btn btn-light" onclick="logout()">로그아웃</button>
+        `;
+      } else {
+        userSection.innerHTML = `
+          <a href="pages/auth/login.html" class="btn btn-light me-2">로그인</a>
+          <a href="pages/auth/signup.html" class="btn btn-outline-light">회원가입</a>
+        `;
+      }
+    });
+
+    // 로그아웃 함수
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.reload();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
